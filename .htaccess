@@ -1,0 +1,24 @@
+AddDefaultCharset UTF-8
+
+php_flag opcache.enable Off
+php_value display_errors 1
+php_value display_startup_errors 1
+php_value error_reporting E_ALL
+
+Options +FollowSymlinks
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (SemrushBot|MJ12bot|AhrefsBot|bingbot|DotBot|LinkpadBot|SputnikBot|statdom.ru|MegaIndex.ru|WebDataStats|Jooblebot|Baiduspider|BackupLand|NetcraftSurveyAgent|openstat.ru) [NC]
+RewriteRule .* - [F,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*) index.php
+
+<FilesMatch "\.(css|js|woff2|ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|rss|atom|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$">
+    Header set Cache-Control "max-age=2592000, must-revalidate"
+</FilesMatch>
+
+
+
+
+
+
